@@ -1,7 +1,7 @@
 rule mutation_analysis:
     input:
         bam = "data/processed/bam/{sample}.bam",
-        ref = "data/ref/ref.fasta",
+        ref = "config/ref/ref.fasta",
     output:
         files= directory("data/processed/mutation_stats/{sample}")
     params:
