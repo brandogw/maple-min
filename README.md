@@ -1,4 +1,6 @@
-# Maple: Mutation Analysis for Parallel Evolution
+# Maple-Min: Mutation Analysis for Parallel Evolution
+
+Bare bones version of Gordon Rix's [MAPLE pipeline] (https://github.com/gordonrix/maple). Only works with Illumina reads.
 
 Maple is a [snakemake](https://snakemake.readthedocs.io/en/stable/index.html) pipeline for analysis of
 mutation-rich next generation sequencing data from highly parallelized targeted evolution experiments.
