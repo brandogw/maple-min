@@ -8,15 +8,7 @@ mutation-rich next generation sequencing data from highly parallelized targeted 
 ## Setup
 
 Maple requires conda, which can be installed by following [these instructions](https://docs.conda.io/projects/conda/en/latest/user-guide/install/).
-Miniconda is lighter weight and provides all that is needed by Maple. If basecalling ONT data is needed,
-then GPU hardware and [cuda](https://docs.nvidia.com/cuda/) are also required. CPU basecalling is not available
-by default because it is prohibitively slow. If CPU basecalling is desired, or if basecalling is not needed,
-comment/uncomment the appropriate rules in rules/install.smk
-
-
-
-Create a conda environment that enables usage of mamba, which is better capable of creating environments
-with snakemake:
+Miniconda is lighter weight and provides all that is needed by Maple. Create a conda environment that enables usage of mamba, which is better capable of creating environments with snakemake:
 
     conda create mamba -n mambaEnv -c conda-forge
 
