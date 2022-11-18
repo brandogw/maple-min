@@ -51,10 +51,10 @@ def main(save_dir, ref_dir,bam_dir,target_name, qsminimum):
 
         # Check for common alignment failure reasons before analysis
         failure_reason, pass_bam_check = bg.bam_ready_check(target_ref, complete_read, bam_entry) # check ref matches, start of protein, end of protein is in read
+        alignment_data, insertions, deletions = bg.analyze_bam(bam_entry, target_ref, complete_read)
 
         if pass_bam_check and bam_entry['cigartuples']:
             # Analyze BAM, create alignment files, and label genotypes
-            alignment_data, insertions, deletions = bg.analyze_bam(bam_entry, target_ref, complete_read)
             codons_with_indels, in_genotype, del_genotype = bg.indel_to_genotype(target_ref, insertions, deletions) 
 
             # id mutations flagged by BAM analysis
@@ -85,6 +85,8 @@ def main(save_dir, ref_dir,bam_dir,target_name, qsminimum):
             aa_nonsynonymous_in_genotype.append(len(aa_nonsynonymous_mut))
         else:
             failure_list.append([bam_entry['query_name'], failure_reason])
+            csv_outputs.export_failure_alignments(save_dir, alignment_data, bam_entry['query_name'], failure_reason)
+
 
     # Pandas dataframe headers
     d = {'seq_ID':bam_query_names, 

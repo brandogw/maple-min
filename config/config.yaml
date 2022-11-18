@@ -1,5 +1,5 @@
 samples: config/samples.csv
 ref: "config/ref/ref.fasta"
-basemount: "/home/m2h-seq/"
-project: "MSJA7"
-target: "nb_nucleotide"
+basemount: "/home/brandogw/"
+project: "MSNP2"
+target: "target"

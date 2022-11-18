@@ -103,6 +103,28 @@ def export_failures(export_dir, failuresDF):
     path = os.path.join(export_dir,'failures.csv')
     failuresDF.to_csv(path, index=False)
 
+def export_failure_alignments(export_dir, alignment_data, seqID, failure_reason):
+    ref = alignment_data[0]
+    alignStr = alignment_data[1]
+    seq = alignment_data[2]
+
+    path = os.path.join(export_dir,'failure_alignments.txt')
+
+    if not os.path.exists(path):
+        with open(path, 'w') as fp:
+            pass
+
+    with open(path, 'a+') as f:
+
+        f.write(f'Sequence ID: {seqID} Failure Reason: {failure_reason}\n')
+        for string in [ref, alignStr, seq]:
+            f.write(string+'\n')
+        f.write('\n')
+
+
+
+
+
 def export_aa_stats(export_dir, target_ref, AAmutArray, AAmutDist, totalSeqs):
 
     target_sequence = str(list(target_ref.sequence)[0])
